@@ -28,7 +28,7 @@ kubectl kustomize https://github.com/kubernetes-sigs/gateway-api/config/crd | ku
 Deploy the operator with the following one-liner:
 
 ```console
-kubectl kustomize https://github.com/kong/gateway-operator/config/default?submodules=false | kubectl apply -f -
+kubectl kustomize https://github.com/kong/gateway-operator-docs/config/default?submodules=false | kubectl apply -f -
 ```
 
 Optionally, you can wait for the operator with:
@@ -302,7 +302,7 @@ For a feature request, please open an issue using the feature request template.
 You can also talk to the developers behind Kong in the [#kong][slack] channel on
 the Kubernetes Slack server.
 
-[disc]:https://github.com/kong/gateway-operator/discussions
+[disc]:https://github.com/kong/gateway-operator-docs/discussions
 [issues]:https://github.com/kong/kubernetes-ingress-controller/issues
 [slack]:https://kubernetes.slack.com/messages/kong
 
