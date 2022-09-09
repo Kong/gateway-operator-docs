@@ -1,22 +1,17 @@
-**WARNING**: This project is under active development and is currently considered **EXPERIMENTAL**.
-             For information about timelines for initial releases please see our [milestones][mst].
-             Please check in with us on the [#kong][ch] on Kubernetes Slack or open a
-             [discussion][discuss] if you have questions, want to contribute, or just want to chat
-             about the project.
 
-[mst]:https://github.com/Kong/gateway-operator/milestones
 [ch]:https://kubernetes.slack.com/messages/kong
 [discuss]:https://github.com/kong/gateway-operator/discussions
 
 # Kong Gateway Operator
 
+**WARNING**: Kong Gateway Operator is under active development and is currently considered a **technical preview**.
+
 A [Kubernetes Operator][k8soperator] for the [Kong Gateway][kong].
 
 [k8soperator]:https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
 [kong]:https://konghq.com
-[helmop]:https://github.com/kong/kong-operator
 
-### Deployment
+## Quick Start Guide
 
 Prior to deployment, Kong and [Gateway API][gwapi] CRDs need to be deployed:
 
@@ -39,7 +34,7 @@ kubectl -n kong-system wait --for=condition=Available=true --timeout=120s deploy
 
 [gwapi]:https://github.com/kubernetes-sigs/gateway-api
 
-### Usage
+## Usage
 
 After deployment usage is driven primarily via the [Gateway][gwapi] resource.
 You can deploy a `Gateway` resource to the cluster which will result in the
@@ -165,7 +160,7 @@ resources previously created.
 [kic]:https://github.com/kong/kubernetes-ingress-controller
 [gw]:https://github.com/kong/kong
 
-#### Gateway upgrades/downgrades
+### Gateway upgrades/downgrades
 
 The `GatewayConfiguration` API can be used to provide the image and the image
 version desired for either the `ControlPlane` or `DataPlane` component of the
@@ -204,9 +199,9 @@ And updating the `dataPlaneDeploymentOptions.version` to `2.8.0`. The result
 will be a replacement `Pod` will roll out with the new version and once healthy
 the old `Pod` will be terminated.
 
-### Usage with Kong enterprise as dataplane
+## Usage with Kong Enterprise as dataplane
 
-You can use Kong enterprise as the dataplane by doing as follows:
+You can use Kong Enterprise as the dataplane by doing as follows:
 
 1. Create a secret with the Kong license in the namespace that you intend to use for deploying the gateway.
 
@@ -289,7 +284,7 @@ You can use Kong enterprise as the dataplane by doing as follows:
 
 > **Note**: the license secret, the `GatewayConfiguration`, and the `Gateway` MUST be created in the same namespace.
 
-### Seeking Help
+## Seeking Help
 
 Please search through the posts on the [discussions page][disc] as it's likely
 that another user has run into the same problem. If you don't find an answer,
@@ -306,7 +301,7 @@ the Kubernetes Slack server.
 [issues]:https://github.com/kong/kubernetes-ingress-controller/issues
 [slack]:https://kubernetes.slack.com/messages/kong
 
-### Community Meetings
+## Community Meetings
 
 You can join monthly meetups hosted by [Kong][kong] to ask questions, provide
 feedback, or just to listen and hang out.
