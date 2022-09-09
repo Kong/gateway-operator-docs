@@ -17,7 +17,7 @@ Prior to deployment, Kong and [Gateway API][gwapi] CRDs need to be deployed:
 
 ```console
 kubectl kustomize https://github.com/Kong/kubernetes-ingress-controller/config/crd | kubectl apply -f -
-kubectl kustomize https://github.com/kubernetes-sigs/gateway-api/config/crd | kubectl apply -f -
+kubectl kustomize https://github.com/kubernetes-sigs/gateway-api/config/crd?ref=v0.5.0 | kubectl apply -f -
 ```
 
 Deploy the operator with the following one-liner:
