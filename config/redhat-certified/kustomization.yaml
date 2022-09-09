@@ -1,0 +1,6 @@
+bases:
+- ../manifests
+
+patchesStrategicMerge:
+- manager_config_patch.yaml
+- validating_webhook.yaml
