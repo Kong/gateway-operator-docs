@@ -20,7 +20,7 @@ kubectl kustomize https://github.com/Kong/kubernetes-ingress-controller/config/c
 kubectl kustomize https://github.com/kubernetes-sigs/gateway-api/config/crd?ref=v0.5.0 | kubectl apply -f -
 ```
 
-Deploy the operator with the following one-liner:
+If using OpenShift, install the operator from the OperatorHub UI. Otherwise, deploy the operator with the following one-liner:
 
 ```console
 kubectl kustomize https://github.com/kong/gateway-operator-docs/config/default?submodules=false | kubectl apply -f -
