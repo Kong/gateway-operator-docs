@@ -284,6 +284,21 @@ You can use Kong Enterprise as the dataplane by doing as follows:
 
 > **Note**: the license secret, the `GatewayConfiguration`, and the `Gateway` MUST be created in the same namespace.
 
+## Gateway API support status
+
+The latest supported version of Gateway API is `v1beta1` released in [v0.5.0](https://github.com/kubernetes-sigs/gateway-api/releases/tag/v0.5.0).
+
+Following matrix summarizes support for the Gateway API resources:
+
+CRD Name              | Supported   | Notes
+----------------------|-------------|-------
+v1beta1.GatewayClass  | yes         |
+v1beta1.Gateway       | yes         |
+v1beta1.HTTPRoute     | no          | Use Ingress from networking.k8s.io/v1 instead
+v1alpha2.TLSRoute     | no          |
+v1alpha2.TCPRoute     | no          |
+v1alpha2.UDPRoute     | no          |
+
 ## Seeking Help
 
 Please search through the posts on the [discussions page][disc] as it's likely
