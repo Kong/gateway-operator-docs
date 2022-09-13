@@ -286,9 +286,9 @@ You can use Kong Enterprise as the dataplane by doing as follows:
 
 ## Gateway API support status
 
-The latest supported version of Gateway API is v1beta1 released by the v0.5.0.
+The latest supported version of Gateway API is `v1beta1` released in [v0.5.0](https://github.com/kubernetes-sigs/gateway-api/releases/tag/v0.5.0).
 
-Following matrix summarize support for the Gateway API resources:
+Following matrix summarizes support for the Gateway API resources:
 
 CRD Name              | Supported   | Notes
 ----------------------|-------------|-------
