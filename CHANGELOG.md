@@ -2,7 +2,21 @@
 
 ## Table of Contents
 
+- [v0.1.1](#v011)
 - [v0.1.0](#v010)
+
+## v0.1.1
+
+> Release date:  2022-09-24
+
+**Maturity: ALPHA**
+
+### Added
+
+- `HTTPRoute` support was added. If version of control plane image is at 
+  least 2.6, the `Gateway=true` feature gate is enabled, so the 
+  control plane can pick up the `HTTPRoute` and configure it on data plane.
+  [#302](https://github.com/Kong/gateway-operator/pull/302)  
 
 ## v0.1.0
 
@@ -42,4 +56,5 @@ leftovers from previous operator deployments in the cluster. The user needs to d
 (clusterrole, clusterrolebinding, validatingWebhookConfiguration) before
 re-installing the operator through the bundle.
 
+[v0.1.1]: https://github.com/Kong/gateway-operator/tree/v0.1.1
 [v0.1.0]: https://github.com/Kong/gateway-operator/tree/v0.1.0
