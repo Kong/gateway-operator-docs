@@ -13,6 +13,16 @@ rules:
   - create
   - patch
 - apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - validatingwebhookconfigurations
+  verbs:
+  - create
+  - delete
+  - get
+  - patch
+  - update
+- apiGroups:
   - apps
   resources:
   - deployments
@@ -29,6 +39,22 @@ rules:
   - deployments/status
   verbs:
   - get
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  verbs:
+  - create
+  - delete
+  - get
+- apiGroups:
+  - configuration.konghq.com
+  resources:
+  - ingressclassparameterses
+  verbs:
+  - get
+  - list
+  - watch
 - apiGroups:
   - configuration.konghq.com
   resources:
@@ -158,6 +184,14 @@ rules:
 - apiGroups:
   - ""
   resources:
+  - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
   - nodes
   verbs:
   - list
@@ -175,6 +209,8 @@ rules:
   resources:
   - secrets
   verbs:
+  - create
+  - delete
   - get
   - list
   - watch
@@ -192,6 +228,7 @@ rules:
   - serviceaccounts
   verbs:
   - create
+  - delete
   - get
   - list
   - patch
@@ -209,6 +246,7 @@ rules:
   - services
   verbs:
   - create
+  - delete
   - get
   - list
   - patch
@@ -244,6 +282,7 @@ rules:
   - controlplanes
   verbs:
   - create
+  - delete
   - get
   - list
   - patch
@@ -269,6 +308,7 @@ rules:
   - dataplanes
   verbs:
   - create
+  - delete
   - get
   - list
   - patch
@@ -350,6 +390,20 @@ rules:
   verbs:
   - get
   - update
+- apiGroups:
+  - gateway.networking.k8s.io
+  resources:
+  - referencegrants
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - gateway.networking.k8s.io
+  resources:
+  - referencegrants/status
+  verbs:
+  - get
 - apiGroups:
   - gateway.networking.k8s.io
   resources:
@@ -549,4 +603,20 @@ rules:
   resources:
   - clusterroles/status
   verbs:
+  - get
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - rolebindings
+  verbs:
+  - create
+  - delete
+  - get
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - roles
+  verbs:
+  - create
+  - delete
   - get
