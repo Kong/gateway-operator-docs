@@ -121,13 +121,13 @@ metadata:
   name: kong
   namespace: default
 spec:
-  dataPlaneDeploymentOptions:
+  controlPlaneDeploymentOptions:
     containerImage: kong/kubernetes-ingress-controller
     version: 2.4.2
     env:
     - name: TEST_VAR
       value: TEST_VAL
-  controlPlaneDeploymentOptions:
+  dataPlaneDeploymentOptions:
     containerImage: kong/kong
     version: 2.8.0
     env:
@@ -294,7 +294,7 @@ CRD Name              | Supported   | Notes
 ----------------------|-------------|-------
 v1beta1.GatewayClass  | yes         |
 v1beta1.Gateway       | yes         |
-v1beta1.HTTPRoute     | no          | Use Ingress from networking.k8s.io/v1 instead
+v1beta1.HTTPRoute     | yes         | Or use Ingress from networking.k8s.io/v1
 v1alpha2.TLSRoute     | no          |
 v1alpha2.TCPRoute     | no          |
 v1alpha2.UDPRoute     | no          |
