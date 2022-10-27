@@ -2,8 +2,33 @@
 
 ## Table of Contents
 
+- [v0.2.0](#v020)
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
+
+## v0.2.0
+
+> Release date: 2022-10-26
+
+**Maturity: ALPHA**
+
+### Added
+
+- Updated default Kong version to 3.0.0
+- Updated default Kubernetes Ingress Controller version to 2.7
+- Update DataPlane and ControlPlane Ready condition when underlying Deployment
+  changes Ready condition
+  [#451](https://github.com/Kong/gateway-operator/pull/451)
+- Update DataPlane NetworkPolicy to match KONG_PROXY_LISTEN and KONG_ADMIN_LISTEN
+  environment variables set in DataPlane
+  [#473](https://github.com/Kong/gateway-operator/pull/473)
+- Added Container image and version validation for ControlPlanes and DataPlanes.
+  The operator now only supports the Kubernetes-ingress-controller (2.7) as
+  the ControlPlane, and Kong (3.0) as the DataPlane.
+  [#490](https://github.com/Kong/gateway-operator/pull/490)
+- DataPlane resources get a new `Status` field: `Addresses` which will contain
+  backing service addresses.
+  [#483](https://github.com/Kong/gateway-operator/pull/483)
 
 ## v0.1.1
 
@@ -56,5 +81,6 @@ leftovers from previous operator deployments in the cluster. The user needs to d
 (clusterrole, clusterrolebinding, validatingWebhookConfiguration) before
 re-installing the operator through the bundle.
 
+[v0.2.0]: https://github.com/Kong/gateway-operator/tree/v0.2.0
 [v0.1.1]: https://github.com/Kong/gateway-operator/tree/v0.1.1
 [v0.1.0]: https://github.com/Kong/gateway-operator/tree/v0.1.0
