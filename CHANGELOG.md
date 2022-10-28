@@ -6,6 +6,15 @@
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
+## Unreleased
+
+> Release date: TBA
+
+### Fixes
+
+- Regenerate DataPlane's TLS secret upon deletion
+  [#500](https://github.com/Kong/gateway-operator/pull/500)
+
 ## v0.2.0
 
 > Release date: 2022-10-26
