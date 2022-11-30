@@ -2,9 +2,40 @@
 
 ## Table of Contents
 
+- [v0.3.0](#v030)
 - [v0.2.0](#v020)
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
+
+## Unreleased
+
+> Release date: TBA
+
+## v0.3.0
+
+> Release date: 2022-11-30
+
+**Maturity: ALPHA**
+
+### Changed
+
+- Bumped DataPlane default image to 3.0.1
+  [#561](https://github.com/Kong/gateway-operator/pull/561)
+
+### Added
+
+- Gateway statuses now include all addresses from their DataPlane Service.
+  [#535](https://github.com/Kong/gateway-operator/pull/535)
+- Dataplane Deployment strategy enforced as RollingUpdate.
+  [#537](https://github.com/Kong/gateway-operator/pull/537)
+
+### Fixes
+
+- Regenerate DataPlane's TLS secret upon deletion
+  [#500](https://github.com/Kong/gateway-operator/pull/500)
+- Gateway statuses no longer list cluster IPs if their DataPlane Service is a
+  LoadBalancer.
+  [#535](https://github.com/Kong/gateway-operator/pull/535)
 
 ## v0.2.0
 
