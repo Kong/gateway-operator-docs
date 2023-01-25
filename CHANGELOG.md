@@ -8,11 +8,9 @@
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
-## v0.4.0
+## v0.4.0 
 
 > Release date: 2022-01-25
-
-**Maturity: ALPHA**
 
 ### Added
 
@@ -80,10 +78,10 @@
 
 ### Added
 
-- `HTTPRoute` support was added. If version of control plane image is at
-  least 2.6, the `Gateway=true` feature gate is enabled, so the
+- `HTTPRoute` support was added. If version of control plane image is at 
+  least 2.6, the `Gateway=true` feature gate is enabled, so the 
   control plane can pick up the `HTTPRoute` and configure it on data plane.
-  [#302](https://github.com/Kong/gateway-operator/pull/302)
+  [#302](https://github.com/Kong/gateway-operator/pull/302)  
 
 ## v0.1.0
 
