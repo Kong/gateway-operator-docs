@@ -2,14 +2,25 @@
 
 ## Table of Contents
 
+- [v0.4.0](#v040)
 - [v0.3.0](#v030)
 - [v0.2.0](#v020)
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
-## Unreleased
+## v0.4.0
 
-> Release date: TBA
+> Release date: 2022-01-25
+
+**Maturity: ALPHA**
+
+### Added
+
+- Added machinery for ControlPlanes to communicate with DataPlanes
+  directly via Pod IPs. The Admin API has been removed from the LoadBalancer service.
+  [#609](https://github.com/Kong/gateway-operator/pull/609)
+- The Gateway Listeners status is set and kept up to date by the Gateway controller.
+  [#627](https://github.com/Kong/gateway-operator/pull/627)
 
 ## v0.3.0
 
@@ -69,10 +80,10 @@
 
 ### Added
 
-- `HTTPRoute` support was added. If version of control plane image is at 
-  least 2.6, the `Gateway=true` feature gate is enabled, so the 
+- `HTTPRoute` support was added. If version of control plane image is at
+  least 2.6, the `Gateway=true` feature gate is enabled, so the
   control plane can pick up the `HTTPRoute` and configure it on data plane.
-  [#302](https://github.com/Kong/gateway-operator/pull/302)  
+  [#302](https://github.com/Kong/gateway-operator/pull/302)
 
 ## v0.1.0
 
@@ -112,6 +123,8 @@ leftovers from previous operator deployments in the cluster. The user needs to d
 (clusterrole, clusterrolebinding, validatingWebhookConfiguration) before
 re-installing the operator through the bundle.
 
+[v0.4.0]: https://github.com/Kong/gateway-operator/tree/v0.4.0
+[v0.3.0]: https://github.com/Kong/gateway-operator/tree/v0.3.0
 [v0.2.0]: https://github.com/Kong/gateway-operator/tree/v0.2.0
 [v0.1.1]: https://github.com/Kong/gateway-operator/tree/v0.1.1
 [v0.1.0]: https://github.com/Kong/gateway-operator/tree/v0.1.0
