@@ -2,13 +2,85 @@
 
 ## Table of Contents
 
+- [v0.5.0](#v050)
 - [v0.4.0](#v040)
 - [v0.3.0](#v030)
 - [v0.2.0](#v020)
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
-## v0.4.0 
+## v0.5.0
+
+> Release date: 2023-06-20
+
+### Added
+
+- Added `AddressSourceType` to `DataPlane` status `Address`
+  [#798](https://github.com/Kong/gateway-operator/pull/798)
+- Add pod Affinity field to `PodOptions` and support for both `DataPlane` and `ControlPlane`
+- Add Kong Gateway enterprise image - `kong/kong-gateway` - to the set of supported
+  `DataPlane` images.
+  [#749](https://github.com/Kong/gateway-operator/pull/749)
+- Moved pod related options in `DeploymentOptions` to `PodsOptions` and added pod
+  labels option.
+  [#742](https://github.com/Kong/gateway-operator/pull/742)
+- Added `Volumes` and `VolumeMounts` field in `DeploymentOptions` of `DataPlane`
+  specs. Users can attach custom volumes and mount the volumes to proxy container
+  of pods in `Deployments` of dataplanes.
+  Note: `Volumes` and `VolumeMounts` are not supported for `ControlPlane` specs now.
+  [#681](https://github.com/Kong/gateway-operator/pull/681)
+- Added possibility to replicas on `DataPlane` deployments
+  This allows users to define `DataPlane`s - without `ControlPlane` - to be
+  horizontally scalable.
+  [#737](https://github.com/Kong/gateway-operator/pull/737)
+- Added possibility to specify `DataPlane` proxy service type
+  [#739](https://github.com/Kong/gateway-operator/pull/739)
+- Added possibility to specify resources through `DataPlane` and `ControlPlane`
+  `spec.deployment.resources`
+  [#712](https://github.com/Kong/gateway-operator/pull/712)
+- The `DataPlane` spec has been updated with a new field related
+  to the proxy service. By using such a field, it is possible to
+  specify annotations to be set on the `DataPlane` proxy service.
+  [#682](https://github.com/Kong/gateway-operator/pull/682)
+
+### Changed
+
+- Bumped default ControlPlane image to 2.9.3
+  [#712](https://github.com/Kong/gateway-operator/pull/712)
+  [#719](https://github.com/Kong/gateway-operator/pull/719)
+- Bumped default DataPlane image to 3.2.2
+  [#728](https://github.com/Kong/gateway-operator/pull/728)
+- Bumped Gateway API to 0.6.1. Along with it, the deprecated `Gateway`
+  `scheduled` condition has been replaced by the `accepted` condition.
+  [#618](https://github.com/Kong/gateway-operator/issues/618)
+- `ControlPlane` and `DataPlane` specs have been refactored by explicitly setting
+  the deployment field (instead of having it inline).
+  [#725](https://github.com/Kong/gateway-operator/pull/725)
+- `ControlPlane` and `DataPlane` specs now require users to provide `containerImage`
+  and `version` fields.
+  This is being enforced in the admission webhook.
+  [#758](https://github.com/Kong/gateway-operator/pull/758)
+- Validation for `ControlPlane` and `DataPlane` components no longer has a
+  "ceiling", or maximum version. This due to popular demand, but now puts more
+  emphasis on the user to troubleshoot when things go wrong. It's no longer
+  possible to use a tag that's not semver compatible (e.g. 2.10.0) for these
+  components (for instance, a branch such as `main`) without enabling developer
+  mode.
+  [#819](https://github.com/Kong/gateway-operator/pull/819)
+- `ControlPlane` and `DataPlane` image validation now supports enterprise image
+  flavours, e.g. `3.3.0-ubuntu`, `3.2.0.0-rhel` etc.
+  [#830](https://github.com/Kong/gateway-operator/pull/830)
+
+### Fixes
+
+- Fix admission webhook certificates Job which caused TLS handshake errors when
+  webhook was being called.
+  [#716](https://github.com/Kong/gateway-operator/pull/716)
+- Include leader election related role when generating `ControlPlane` RBAC
+  manifests so that Gateway Discovery can be used by KIC.
+  [#743](https://github.com/Kong/gateway-operator/pull/743)
+
+## v0.4.0
 
 > Release date: 2022-01-25
 

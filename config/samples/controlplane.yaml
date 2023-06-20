@@ -5,3 +5,16 @@ metadata:
 spec:
   dataplane: dataplane-example
   gatewayClass: kong
+  deployment:
+    pods:
+      containerImage: kong/kubernetes-ingress-controller
+      version: "2.9"
+      labels:
+        controlplane-pod-label: example
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "1024Mi"
+        cpu: "1000m"
