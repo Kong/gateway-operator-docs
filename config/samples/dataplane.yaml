@@ -1,25 +1,34 @@
-apiVersion: gateway-operator.konghq.com/v1alpha1
+apiVersion: gateway-operator.konghq.com/v1beta1
 kind: DataPlane
 metadata:
   name: dataplane-example
 spec:
   deployment:
-    pods:
-      containerImage: kong
-      version: "3.2"
-      labels:
-        dataplane-pod-label: example
-      env:
-      - name: KONG_LOG_LEVEL
-        value: debug
-      resources:
-        requests:
-          memory: "64Mi"
-          cpu: "250m"
-        limits:
-          memory: "1024Mi"
-          cpu: "1000m"
-  services:
-    proxy:
-      annotations:
-        foo: bar
+    podTemplateSpec:
+      metadata:
+        labels:
+          dataplane-pod-label: example
+        annotations:
+          dataplane-pod-annotation: example
+      spec:
+        containers:
+        - name: proxy
+          image: kong:3.3
+          env:
+          - name: KONG_LOG_LEVEL
+            value: debug
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "1000m"
+          readinessProbe:
+            initialDelaySeconds: 1
+            periodSeconds: 1
+  network:
+    services:
+      ingress:
+        annotations:
+          foo: bar
