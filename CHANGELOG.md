@@ -10,6 +10,127 @@
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
+## v0.7.0
+
+> Release date: 2023-09-13
+
+### Added
+
+- Added `gateway-operator.konghq.com/service-selector-override` as the dataplane
+  annotation to override the default `Selector` of both the admin and proxy services.
+  [#921](https://github.com/Kong/gateway-operator/pull/921)
+- Added deploying of preview Admin API service when Blue Green rollout strategy
+  is enabled for `DataPlane`s.
+  `DataPlane`'s `status.rollout.service` is updated accordingly.
+  [#931](https://github.com/Kong/gateway-operator/pull/931)
+- Added `gateway-operator.konghq.com/promote-when-ready` `DataPlane` annotation to allow
+  users to signal the operator should proceed with promoting the new resources when
+  `BreakBeforePromotion` promotion strategy is used.
+  [#938](https://github.com/Kong/gateway-operator/pull/938)
+- Added deploying of preview Deployment when Blue Green rollout strategy
+  is enabled for `DataPlane`s.
+  [#930](https://github.com/Kong/gateway-operator/pull/930)
+- Added appropriate label selectors to `DataPlane`s with enabled Blue Green rollout
+  strategy. Now Admin Service and `DataPlane` Deployments correctly select their
+  Pods.
+  Added `DataPlane`'s `status.selector` and `status.rollout.deployment.selector` fields.
+  [#951](https://github.com/Kong/gateway-operator/pull/951)
+- Added setting rollout status with `RolledOut` condition
+  [#960](https://github.com/Kong/gateway-operator/pull/960)
+- Added deploying of preview ingress service for Blue Green rollout strategy.
+  [#956](https://github.com/Kong/gateway-operator/pull/956)
+- Implemented an actual promotion of a preview deployment to live state when BlueGreen
+  rollout strategy is used.
+  [#966](https://github.com/Kong/gateway-operator/pull/966)
+- Added `DataPlane` count in telemetry reports.
+  [#941](https://github.com/Kong/gateway-operator/pull/941)
+- Added `PromotionFailed` condition which is set on `DataPlane`s with Blue Green
+  rollout strategy when promotion related activities (like updating `DataPlane`
+  service selector) fail.
+  [#1005](https://github.com/Kong/gateway-operator/pull/1005)
+- Added `spec.deployment.rollout.strategy.blueGreen.resources.plan.deployment`
+  which controls how operator manages `DataPlane` `Deployment`'s during and after
+  a rollout. This can currently take 1 value:
+  - `ScaleDownOnPromotionScaleUpOnRollout` which will scale down the `DataPlane`
+  preview deployment to 0 replicas before a rollout is triggered via a spec change.
+  [#1000](https://github.com/Kong/gateway-operator/pull/1000)
+- Added admission webhook validation on of `DataPlane` spec updates when the
+  Blue Green promotion is in progress.
+  [#1051](https://github.com/Kong/gateway-operator/pull/1051)
+- Added `gateway-operator.konghq.com/wait-for-owner` finalizer to all dependent
+  resources owned by `DataPlane` to prevent them from being mistakenly deleted.
+  [#1052](https://github.com/Kong/gateway-operator/pull/1052)
+
+### Fixes
+
+- Fixes setting `status.ready` and `status.conditions` on the `DataPlane` when
+  it's waiting for an address to be assigned to its LoadBalancer Ingress Service.
+  [#942](https://github.com/Kong/gateway-operator/pull/942)
+- Correctly set the `observedGeneration` on `DataPlane` and `ControlPlane` status
+  conditions.
+  [#944](https://github.com/Kong/gateway-operator/pull/944)
+- Added annotation `gateway-operator.konghq.com/last-applied-annotations` to
+  resources (e.g, Ingress `Services`s) owned by `DataPlane`s to store last
+   applied annotations to the owned resource. If an annotation is present in the
+  `gateway-operator.konghq.com/last-applied-annotations` annotation of an
+  ingress `Service` but not present in the current specification of ingress
+  `Service` annotations of the owning `DataPlane`, the annotation will be removed
+  in the ingress `Service`.
+  [#936](https://github.com/Kong/gateway-operator/pull/936)
+- Correctly set the `Ready` condition in `DataPlane` status field during Blue
+  Green promotion. The `DataPlane` is considered ready whenever it has its
+  Deployment's `AvailableReplicas` equal to desired number of replicas (as per
+  `spec.replicas`) and its Service has an IP assigned if it's of type `LoadBalancer`.
+  [#986](https://github.com/Kong/gateway-operator/pull/986)
+- Properly handles missing CRD during controller startup. Now whenever a CRD
+  is missing during startup a clean log entry will be printed to inform a user
+  why the controller was disabled.
+  Additionally a check for `discovery.ErrGroupDiscoveryFailed` was added during
+  CRD lookup.
+  [#1059](https://github.com/Kong/gateway-operator/pull/1059)
+
+### Changes
+
+- Default the leader election namespace to controller namespace (`POD_NAMESPACE` env)
+  instead of hardcoded "kong-system"
+  [#927](https://github.com/Kong/gateway-operator/pull/927)
+- Renamed `DataPlane` proxy service name and label to ingress
+  [#971](https://github.com/Kong/gateway-operator/pull/971)
+- Removed `DataPlane` `status.ready` as it couldn't be used reliably to represent
+  `DataPlane`'s status. Users should now use `status.conditions`'s `Ready` condition
+  and compare its `observedGeneration` with `DataPlane` `metadata.generation`
+  to get an accurate representation of `DataPlane`'s readiness.
+  [#989](https://github.com/Kong/gateway-operator/pull/989)
+- Disable `ControlPlane` and `Gateway` controllers by default.
+  Users who want to enable those can use the command line flags:
+  - `-enable-controller-controlplane` and
+  - `-enable-controller-gateway`
+  At this time, the Gateway API and `ControlPlane` resources that these
+  flags are considered a feature preview, and are not supported. Use these
+  only in non-production scenarios until these features are graduated to GA.
+  [#1026](https://github.com/Kong/gateway-operator/pull/1026)
+- Bump `ControlPlane` default version to `v2.11.1` and remove support for older versions.
+  To satisfy this change, use `Programmed` condition instead of `Ready` in Gateway
+  Listeners status conditions to make `ControlPlane` be able to attach routes
+  to those listeners.
+  This stems from the fact that KIC `v2.11` bumped support for Gateway API to `v0.7.1`.
+  [#1041](https://github.com/Kong/gateway-operator/pull/1041)
+- Bump Gateway API to v0.7.1.
+  [#1047](https://github.com/Kong/gateway-operator/pull/1047)
+- Operator doesn't change the `DataPlane` resource anymore by filling it with
+  Kong Gateway environment variables. Instead this is now happening on the fly
+  so the `DataPlane` resources applied by users stay as submitted.
+  [#1034](https://github.com/Kong/gateway-operator/pull/1034)
+- Don't use `Provisioned` status condition type on `DataPlane`s.
+  From now on `DataPlane`s are only expressing their status through `Ready` status
+  condtion.
+  [#1043](https://github.com/Kong/gateway-operator/pull/1043)
+- Bump default `DataPlane` image to 3.4
+  [#1067](https://github.com/Kong/gateway-operator/pull/1067)
+- When rollout strategy is removed from a `DataPlane` spec, preview subresources
+  are removed.
+  [#1066](https://github.com/Kong/gateway-operator/pull/1066)
+
 ## v0.6.0
 
 > Release date: 2023-07-20
@@ -18,9 +139,11 @@
 
 - Added `Ready`, `ReadyReplicas` and `Replicas` fields to `DataPlane`'s Status
   [#854](https://github.com/Kong/gateway-operator/pull/854)
-- Added `Rollout` field to `DataPlane` CRD. This allows specification of rollout strategy
-  and behavior (e.g. to enable blue/green rollouts for upgrades).
+- Added `Rollout` field to `DataPlane` CRD. This allows specification of rollout
+  strategy and behavior (e.g. to enable blue/green rollouts for upgrades).
   [#879](https://github.com/Kong/gateway-operator/pull/879)
+- Added `Rollout` status fields to `DataPlane` CRD.
+  [#896](https://github.com/Kong/gateway-operator/pull/896)
 
 ### Changes
 
