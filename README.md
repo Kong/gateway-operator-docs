@@ -1,7 +1,3 @@
-
-[ch]:https://kubernetes.slack.com/messages/kong
-[discuss]:https://github.com/kong/gateway-operator/discussions
-
 # Kong Gateway Operator
 
 **WARNING**: Kong Gateway Operator is under active development and is currently considered a **technical preview**.
@@ -10,8 +6,8 @@ A [Kubernetes Operator][k8soperator] for the [Kong Gateway][kong].
 
 The full documentation can be found in the Kong incubator [website][kongincubator]
 
-[k8soperator]:https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
-[kong]:https://konghq.com
+[k8soperator]: https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+[kong]: https://konghq.com
 [kongincubator]: https://incubator.konghq.com/p/gateway-operator/
 
 ## Seeking Help
