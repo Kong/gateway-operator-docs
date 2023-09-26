@@ -2,6 +2,8 @@
 
 ## Table of Contents
 
+- [v1.0.0-rc.0](#v100-rc0)
+- [v0.7.0](#v070)
 - [v0.6.0](#v060)
 - [v0.5.0](#v050)
 - [v0.4.0](#v040)
@@ -9,6 +11,29 @@
 - [v0.2.0](#v020)
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
+
+## v1.0.0-rc.0
+
+> Release date: 2023-09-22
+
+### Changes
+
+- Operator managed subresources are now labelled with `gateway-operator.konghq.com/managed-by`
+  additionally to the old `konghq.com/gateway-operator` label.
+  The value associated with this label stays the same and it still indicates the
+  type of a resource that owns the subresrouce.
+  The old label should not be used as it will be deleted in the future.
+  [#1098](https://github.com/Kong/gateway-operator/pull/1098)
+- Enable `DataPlane` Blue Green rollouts controller by default.
+  [#1106](https://github.com/Kong/gateway-operator/pull/1106)
+
+### Fixes
+
+- Fixes handling `Volume`s and `VolumeMount`s when customizing through `DataPlane`'s
+  `spec.deployment.podTemplateSpec.spec.containers[*].volumeMounts` and/or
+  `spec.deployment.podTemplateSpec.spec.volumes`.
+  Sample manifests are updated accordingly.
+  [#1095](https://github.com/Kong/gateway-operator/pull/1095)
 
 ## v0.7.0
 
