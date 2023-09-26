@@ -1,18 +1,14 @@
-
-[ch]:https://kubernetes.slack.com/messages/kong
-[discuss]:https://github.com/kong/gateway-operator/discussions
-
 # Kong Gateway Operator
 
-**WARNING**: Kong Gateway Operator is under active development and is currently considered a **technical preview**.
+**WARNING**: Kong Gateway Operator is under active development.
 
 A [Kubernetes Operator][k8soperator] for the [Kong Gateway][kong].
 
-The full documentation can be found in the Kong incubator [website][kongincubator]
+The full documentation can be found at [Kong's gateway-operator docs.][konghq_docs_operator]
 
+[konghq_docs_operator]: https://docs.konghq.com/gateway-operator/latest/
 [k8soperator]:https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
 [kong]:https://konghq.com
-[kongincubator]: https://incubator.konghq.com/p/gateway-operator/
 
 ## Seeking Help
 
@@ -28,7 +24,7 @@ You can also talk to the developers behind Kong in the [#kong][slack] channel on
 the Kubernetes Slack server.
 
 [disc]:https://github.com/kong/gateway-operator-docs/discussions
-[issues]:https://github.com/kong/kubernetes-ingress-controller/issues
+[issues]:https://github.com/kong/gateway-operator-docs/issues
 [slack]:https://kubernetes.slack.com/messages/kong
 
 ## Community Meetings
