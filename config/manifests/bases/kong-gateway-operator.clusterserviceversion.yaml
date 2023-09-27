@@ -5,7 +5,7 @@ metadata:
     alm-examples: '[]'
     capabilities: Basic Install
     categories: Networking,Integration & Delivery
-    containerImage: docker.io/kong/gateway-operator:1.0.0-rc.0
+    containerImage: docker.io/kong/gateway-operator:1.0.0
     description: A Kubernetes Operator for the Kong Gateway
     operatorframework.io/suggested-namespace: kong-system
     repository: https://kong.github.io/gateway-operator-docs
@@ -79,7 +79,7 @@ spec:
     - email: support@konghq.com
       name: Kong Inc.
   maturity: alpha
-  minKubeVersion: 1.23.0
+  minKubeVersion: 1.25.0
   provider:
     name: Kong Inc.
     url: https://konghq.com

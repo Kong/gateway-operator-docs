@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [v1.0.0-rc.0](#v100-rc0)
+- [v1.0.0](#v100)
 - [v0.7.0](#v070)
 - [v0.6.0](#v060)
 - [v0.5.0](#v050)
@@ -12,9 +12,9 @@
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
-## v1.0.0-rc.0
+## v1.0.0
 
-> Release date: 2023-09-22
+> Release date: 2023-09-26
 
 ### Changes
 
@@ -386,6 +386,8 @@ leftovers from previous operator deployments in the cluster. The user needs to d
 (clusterrole, clusterrolebinding, validatingWebhookConfiguration) before
 re-installing the operator through the bundle.
 
+[v1.0.0]: https://github.com/Kong/gateway-operator/tree/v1.0.0
+[v0.7.0]: https://github.com/Kong/gateway-operator/tree/v0.7.0
 [v0.6.0]: https://github.com/Kong/gateway-operator/tree/v0.6.0
 [v0.5.0]: https://github.com/Kong/gateway-operator/tree/v0.5.0
 [v0.4.0]: https://github.com/Kong/gateway-operator/tree/v0.4.0
