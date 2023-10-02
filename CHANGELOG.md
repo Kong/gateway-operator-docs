@@ -12,6 +12,23 @@
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
+## v1.0.1
+
+> Release date: 2023-10-02
+
+### Fixes
+
+- Fix flapping of `Gateway` managed `ControlPlane` `spec` field when applied without
+  `controlPlaneOptions` set.
+  [#1127](https://github.com/Kong/gateway-operator/pull/1127)
+
+### Changes
+
+- Bump `ControlPlane` default version to `v2.12`.
+  [#1118](https://github.com/Kong/gateway-operator/pull/1118)
+- Bump `WebhookCertificateConfigBaseImage` to `v1.3.0`.
+  [#1130](https://github.com/Kong/gateway-operator/pull/1130)
+
 ## v1.0.0
 
 > Release date: 2023-09-26
