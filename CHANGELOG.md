@@ -12,6 +12,14 @@
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
+## v1.0.2
+
+> Release date: 2023-10-18
+
+### Fixes
+
+- Bump dependencies
+
 ## v1.0.1
 
 > Release date: 2023-10-02
