@@ -12,7 +12,25 @@
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
 
-## v1.0.2
+## [v1.0.3]
+
+> Release date: 2023-11-06
+
+### Fixes
+
+- Fix an issue where operator is upgraded from an older version and it orphans
+  old `DataPlane` resources.
+  [#1155](https://github.com/Kong/gateway-operator/pull/1155)
+  [#1161](https://github.com/Kong/gateway-operator/pull/1161)
+
+### Added
+
+- Setting `spec.deployment.podTemplateSpec.spec.volumes` and
+  `spec.deployment.podTemplateSpec.spec.containers[*].volumeMounts` on `ControlPlane`s
+  is now allowed.
+  [#1175](https://github.com/Kong/gateway-operator/pull/1175)
+
+## [v1.0.2]
 
 > Release date: 2023-10-18
 
@@ -20,7 +38,7 @@
 
 - Bump dependencies
 
-## v1.0.1
+## [v1.0.1]
 
 > Release date: 2023-10-02
 
@@ -37,7 +55,7 @@
 - Bump `WebhookCertificateConfigBaseImage` to `v1.3.0`.
   [#1130](https://github.com/Kong/gateway-operator/pull/1130)
 
-## v1.0.0
+## [v1.0.0]
 
 > Release date: 2023-09-26
 
@@ -60,7 +78,7 @@
   Sample manifests are updated accordingly.
   [#1095](https://github.com/Kong/gateway-operator/pull/1095)
 
-## v0.7.0
+## [v0.7.0]
 
 > Release date: 2023-09-13
 
@@ -181,7 +199,7 @@
   are removed.
   [#1066](https://github.com/Kong/gateway-operator/pull/1066)
 
-## v0.6.0
+## [v0.6.0]
 
 > Release date: 2023-07-20
 
@@ -227,7 +245,7 @@
   one should already have the `Affinity` set making the update unnecessary.
   [#894](https://github.com/Kong/gateway-operator/pull/894)
 
-## v0.5.0
+## [v0.5.0]
 
 > Release date: 2023-06-20
 
@@ -298,7 +316,7 @@
   manifests so that Gateway Discovery can be used by KIC.
   [#743](https://github.com/Kong/gateway-operator/pull/743)
 
-## v0.4.0
+## [v0.4.0]
 
 > Release date: 2022-01-25
 
@@ -310,7 +328,7 @@
 - The Gateway Listeners status is set and kept up to date by the Gateway controller.
   [#627](https://github.com/Kong/gateway-operator/pull/627)
 
-## v0.3.0
+## [v0.3.0]
 
 > Release date: 2022-11-30
 
@@ -336,7 +354,7 @@
   LoadBalancer.
   [#535](https://github.com/Kong/gateway-operator/pull/535)
 
-## v0.2.0
+## [v0.2.0]
 
 > Release date: 2022-10-26
 
@@ -360,7 +378,7 @@
   backing service addresses.
   [#483](https://github.com/Kong/gateway-operator/pull/483)
 
-## v0.1.1
+## [v0.1.1]
 
 > Release date:  2022-09-24
 
@@ -373,7 +391,7 @@
   control plane can pick up the `HTTPRoute` and configure it on data plane.
   [#302](https://github.com/Kong/gateway-operator/pull/302)  
 
-## v0.1.0
+## [v0.1.0]
 
 > Release date: 2022-09-15
 
@@ -411,12 +429,15 @@ leftovers from previous operator deployments in the cluster. The user needs to d
 (clusterrole, clusterrolebinding, validatingWebhookConfiguration) before
 re-installing the operator through the bundle.
 
-[v1.0.0]: https://github.com/Kong/gateway-operator/tree/v1.0.0
-[v0.7.0]: https://github.com/Kong/gateway-operator/tree/v0.7.0
-[v0.6.0]: https://github.com/Kong/gateway-operator/tree/v0.6.0
-[v0.5.0]: https://github.com/Kong/gateway-operator/tree/v0.5.0
-[v0.4.0]: https://github.com/Kong/gateway-operator/tree/v0.4.0
-[v0.3.0]: https://github.com/Kong/gateway-operator/tree/v0.3.0
-[v0.2.0]: https://github.com/Kong/gateway-operator/tree/v0.2.0
-[v0.1.1]: https://github.com/Kong/gateway-operator/tree/v0.1.1
-[v0.1.0]: https://github.com/Kong/gateway-operator/tree/v0.1.0
+[v1.0.3]: https://github.com/kong/gateway-operator/compare/v1.0.2..v1.0.3
+[v1.0.2]: https://github.com/kong/gateway-operator/compare/v1.0.1..v1.0.2
+[v1.0.1]: https://github.com/kong/gateway-operator/compare/v1.0.0..v1.0.1
+[v1.0.0]: https://github.com/kong/gateway-operator/compare/v0.7.0..v1.0.0
+[v0.7.0]: https://github.com/kong/gateway-operator/compare/v0.6.0..v0.7.0
+[v0.6.0]: https://github.com/Kong/gateway-operator/compare/v0.5.0..v0.6.0
+[v0.5.0]: https://github.com/Kong/gateway-operator/compare/v0.4.0..v0.5.0
+[v0.4.0]: https://github.com/Kong/gateway-operator/compare/v0.3.0..v0.4.0
+[v0.3.0]: https://github.com/Kong/gateway-operator/compare/v0.2.0..v0.3.0
+[v0.2.0]: https://github.com/Kong/gateway-operator/compare/v0.1.0..v0.2.0
+[v0.1.1]: https://github.com/Kong/gateway-operator/compare/v0.0.1..v0.1.1
+[v0.1.0]: https://github.com/Kong/gateway-operator/compare/v0.0.0..v0.1.0
