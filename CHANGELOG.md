@@ -14,7 +14,7 @@
 
 ## [v1.0.3]
 
-> Release date: TBD
+> Release date: 2023-11-06
 
 ### Fixes
 
