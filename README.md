@@ -1,7 +1,5 @@
 # Kong Gateway Operator
 
-**WARNING**: Kong Gateway Operator is under active development.
-
 A [Kubernetes Operator][k8soperator] for the [Kong Gateway][kong].
 
 The full documentation can be found at [Kong's gateway-operator docs.][konghq_docs_operator]
