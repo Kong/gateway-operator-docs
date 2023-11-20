@@ -2,6 +2,10 @@
 
 ## Table of Contents
 
+- [v1.1.0](#v101)
+- [v1.0.3](#v103)
+- [v1.0.2](#v102)
+- [v1.0.1](#v101)
 - [v1.0.0](#v100)
 - [v0.7.0](#v070)
 - [v0.6.0](#v060)
@@ -11,6 +15,28 @@
 - [v0.2.0](#v020)
 - [v0.1.1](#v011)
 - [v0.1.0](#v010)
+
+## [v1.1.0]
+
+> Release date: 2023-11-20
+
+### Added
+
+- Add support for `ControlPlane` `v3.0` by updating the generated `ClusterRole`.
+  [#1189](https://github.com/Kong/gateway-operator/pull/1189)
+
+### Changes
+
+- Bump `ControlPlane` default version to `v3.0`.
+  [#1189](https://github.com/Kong/gateway-operator/pull/1189)
+- Bump Gateway API to v1.0.
+  [#1189](https://github.com/Kong/gateway-operator/pull/1189)
+
+### Fixes
+
+- Operator `Role` generation is fixed. As a result it contains now less rules
+  hence the operator needs less permissions to run.
+  [#1191](https://github.com/Kong/gateway-operator/pull/1191)
 
 ## [v1.0.3]
 
@@ -429,6 +455,7 @@ leftovers from previous operator deployments in the cluster. The user needs to d
 (clusterrole, clusterrolebinding, validatingWebhookConfiguration) before
 re-installing the operator through the bundle.
 
+[v1.1.0]: https://github.com/kong/gateway-operator/compare/v1.0.3..v1.1.0
 [v1.0.3]: https://github.com/kong/gateway-operator/compare/v1.0.2..v1.0.3
 [v1.0.2]: https://github.com/kong/gateway-operator/compare/v1.0.1..v1.0.2
 [v1.0.1]: https://github.com/kong/gateway-operator/compare/v1.0.0..v1.0.1
