@@ -118,6 +118,34 @@ spec:
             requests:
               cpu: 10m
 ---
+kind: GatewayConfiguration
+apiVersion: gateway-operator.konghq.com/v1alpha1
+metadata:
+  name: kong
+  namespace: default
+spec:
+  dataPlaneOptions:
+    deployment:
+      replicas: 2
+      podTemplateSpec:
+        spec:
+          containers:
+          - name: proxy
+            image: kong:3.4
+            readinessProbe:
+              initialDelaySeconds: 1
+              periodSeconds: 1
+  controlPlaneOptions:
+    deployment:
+      podTemplateSpec:
+        spec:
+          containers:
+          - name: controller
+            image: kong/kubernetes-ingress-controller:3.0.1
+            readinessProbe:
+              initialDelaySeconds: 1
+              periodSeconds: 1
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
@@ -141,33 +169,6 @@ spec:
   - name: http
     protocol: HTTP
     port: 80
----
-kind: GatewayConfiguration
-apiVersion: gateway-operator.konghq.com/v1alpha1
-metadata:
-  name: kong
-  namespace: default
-spec:
-  dataPlaneOptions:
-    deployment:
-      podTemplateSpec:
-        spec:
-          containers:
-          - name: proxy
-            image: kong:3.4
-            readinessProbe:
-              initialDelaySeconds: 1
-              periodSeconds: 1
-  controlPlaneOptions:
-    deployment:
-      podTemplateSpec:
-        spec:
-          containers:
-          - name: controller
-            image: kong/kubernetes-ingress-controller:2.12
-            readinessProbe:
-              initialDelaySeconds: 1
-              periodSeconds: 1
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
